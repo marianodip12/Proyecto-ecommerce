@@ -1,0 +1,11 @@
+/* Estilos personalizados */
+.navbar-nav {
+    width: 100%; /* Establecer ancho completo */
+    display: flex;
+    justify-content: space-evenly; /* Distribuir los elementos de forma equitativa */
+}
+
+.form-control {
+    width: 100%; /* Establecer ancho completo para el campo de búsqueda */
+    max-width: 300px; /* Establecer un ancho máximo */
+}
