@@ -3,6 +3,8 @@
 let totalCompra = 0;
 let opcion;
 let totalimp =0;
+
+//clases
 class Producto {
     constructor(categoria, codigo, nombre, importe, descripcionprod) {
         this.categoria = categoria;
@@ -12,12 +14,20 @@ class Producto {
         this.descripcionprod = descripcionprod;
     }
 }
-class Carrito{
-    constructor(){
-        this.productos=[];
+class Carrito {
+    constructor() {
+        this.productos = [];
     }
+
+    agregarProducto(producto) {
+        this.productos.push(producto);
+    }
+
+    
 }
+
 const productos = [];
+const carrito = new Carrito();
 
 
 
@@ -65,7 +75,7 @@ while (true) {
         case "usuario":
             // Funciones del usuario + Menu
             while (true) {
-                let opcionadm = prompt("Menu:\n1-Mostrar Productos \n2-Agregar Producto al carrito al carrito \n4-Mostrar carrito  \n5-finalizar compra \n6-Salir ");
+                let opcionadm = prompt("Menu:\n1-Mostrar Productos \n2-Buscar Producto \n3-Agregar Producto al carrito al carrito \n4-Mostrar carrito  \n5-finalizar compra \n6-Salir ");
 
                 switch (opcionadm) {
                     case "1":
@@ -202,9 +212,17 @@ function BuscarProducto() {
     }
 }
 
+/*function filtrarCategorias() {
+    let parametro = prompt("Ingresa la categoría a filtrar:")
+
+    if (parametro !== "") {
+        let resultado = productos.filter((producto)=> producto.categoria ===  parametro)
+        console.table(resultado)
+    }
+}*/
 
 //Seccion usuario
-
+//Mostrar productos agregados
 function mostrarProductosAgregados() {
     console.log("Productos agregados por el administrador:");
     if (productos.length === 0) {
@@ -215,7 +233,7 @@ function mostrarProductosAgregados() {
         });
     }
 }
-
+//funcion para agregar al carrito
 function Agregarproductoalcarrito() {
     let codigo = prompt("Ingrese el código del producto que desea agregar al carrito (o escriba 'salir' para volver al menú principal):");
     
@@ -227,44 +245,44 @@ function Agregarproductoalcarrito() {
     let productoEncontrado = productos.find(producto => producto.codigo === codigo);
     
     if (productoEncontrado) {
-        carrito.agregarProducto(productoEncontrado);
+        carrito.agregarProducto(productoEncontrado) 
     } else {
         console.log("Producto no encontrado.");
     }
 }
 
-
+//funcion para mostrar el carrito que valida si no hay producto , caso contrario muestra una tabla con todo los productos agregado
 function mostrarCarrito() {
     console.log("Contenido del carrito:");
     if (carrito.productos.length === 0) {
-        console.log("El carrito está vacío.");
+        console.log("El carrito está vacio.");
     } else {
         carrito.productos.forEach(producto => {
-            console.table(producto);
+            console.table([producto]); 
         });
     }
 }
+//funcion para finalizar la compra del carrito  y que quede vacio
 function finalizarCompra() {
-    // Mostrar el contenido del carrito
+    
     console.log("Contenido del carrito:");
     if (carrito.productos.length === 0) {
-        console.log("El carrito está vacío.");
+        console.log("El carrito esta vacio.");
     } else {
         carrito.productos.forEach(producto => {
             console.table(producto);
         });
     }
     
-    // Calcular el importe total
+    
     let importeTotal = 0;
     carrito.productos.forEach(producto => {
         importeTotal += producto.importe;
     });
 
-    // Mostrar el importe total
-    console.log("Importe total de la compra: $" + importeTotal.toFixed(2));
     
-    // Limpiar el carrito
+    console.log("Importe total de la compra: $" + importeTotal);
+    
     carrito.productos = [];
 }
 
