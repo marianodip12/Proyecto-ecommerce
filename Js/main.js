@@ -12,6 +12,11 @@ class Producto {
         this.descripcionprod = descripcionprod;
     }
 }
+class Carrito{
+    constructor(){
+        this.productos=[];
+    }
+}
 const productos = [];
 
 
@@ -40,7 +45,8 @@ while (true) {
                         EliminarProducto()
                         break;
                     case "4":
-                        console.log("buscar");
+                        BuscarProducto()
+                        
                         break;
                     case "5":
                         console.log("Vuelta al menu principal");
@@ -58,6 +64,40 @@ while (true) {
 
         case "usuario":
             // Funciones del usuario + Menu
+            while (true) {
+                let opcionadm = prompt("Menu:\n1-Mostrar Productos \n2-Agregar Producto al carrito al carrito \n4-Mostrar carrito  \n5-finalizar compra \n6-Salir ");
+
+                switch (opcionadm) {
+                    case "1":
+                        mostrarProductosAgregados()
+                        break;
+                    case "2":
+                        BuscarProducto()
+                        
+                        break;
+                    case "3":
+                        Agregarproductoalcarrito()
+                        break;
+                    case "4":
+                        mostrarCarrito()
+                        
+                        break;
+                    case "5":
+                        finalizarCompra();
+                        
+                        break;
+                    case "6":
+                        console.log("Vuelta al menu principal");
+                        break;
+                    default:
+                        prompt("Opción no válida. Por favor, elige una opción válida Menu:\n1-Agregar Producto \n2-Modificar Producto \n3-Eliminar Producto \n4-Buscar Producto \n5-Salir");
+                        break;
+                }
+
+                if (opcionadm === "6") {
+                    break; 
+                }
+            }
             break;
 
         case "finalizar":
@@ -74,64 +114,15 @@ while (true) {
     }
 }
 
-
-/*
-
-while (true) {
-    //solicitamos al usuario que ingrese una de estas opciones 
-    opcion = prompt("Por favor, elige una opcion (procesador, memoria ram, ventilador, motherboard, gabinete, disco duro, mouse, teclado, auriculares, monitor o finalizar):");
-
-    // Armo el menu 
-    switch (opcion) {
-        case "procesador":
-        case "memoria ram":
-        case "ventilador":
-        case "motherboard":
-        case "gabinete":
-        case "disco duro":
-        case "mouse":
-        case "teclado":
-        case "auriculares":
-        case "monitor":
-            // en la variable totalcompra llamo a la funcion  producto  para preguntar cuanto cuesta  y almaceno y sumo el valor
-            totalCompra += producto();
-            break;
-
-            // salir del programa
-        case "finalizar":
-            console.log("Programa finalizado.");
-            //llamo a la funcion total impuesto
-            totalimpuestos();
-            console.log("El costo total de su compra es: " + totalimp);
-            
-            break;
-        default:
-            console.log("Opcion no vaida. Por favor, elige una opción valida (procesador, memoria ram, ventilador, motherboard, gabinete, disco duro, mouse, teclado, auriculares, monitor o finalizar).");
-            break;
-    }
-
-    // Control finalizar
-    if (opcion === "finalizar") {
-        break;
-    }
-}
-
-*/  
-
-
-
-
 //Seccion producto admin
 
 
-
-
 function agregarProducto() {
-    let categoria = prompt("Ingrese la categoría del Producto");
-    let codigo = prompt("Ingresa el código del producto:");
+    let categoria = prompt("Ingrese la categoria del Producto");
+    let codigo = prompt("Ingresa el codigo del producto:");
     let nombre = prompt("Ingresa el nombre del producto:");
     let importe = prompt("Ingresa el importe:");
-    let descripcionprod = prompt("Ingrese la descripción del producto:");
+    let descripcionprod = prompt("Ingrese la descripcion del producto:");
 
     let nuevoProducto = new Producto(categoria,codigo, nombre, parseInt(importe), descripcionprod);
     productos.push(nuevoProducto);
@@ -141,7 +132,7 @@ function agregarProducto() {
 
 function modificarProducto() {
     
-    let codigo = prompt("Ingrese el código del producto que desea modificar:");
+    let codigo = prompt("Ingrese el codigo del producto que desea modificar:");
 
     
     let productoEncontrado = productos.find(producto => producto.codigo === codigo);
@@ -168,7 +159,7 @@ function modificarProducto() {
 
 function EliminarProducto() {
     while (true) {
-        let codigo = prompt("Ingrese el código del producto que desea eliminar:");
+        let codigo = prompt("Ingrese el codigo del producto que desea eliminar:");
 
         let productoEncontrado = productos.find(producto => producto.codigo === codigo);
 
@@ -186,22 +177,101 @@ function EliminarProducto() {
                 console.log("El producto no fue eliminado.");
                 return;
             }
+            } else {
+                console.log("Producto no encontrado");
+        }
+    }
+}
+
+function BuscarProducto() {
+    while (true) {
+        let codigo1 = prompt("Ingrese el codigo del producto que desea buscar (o escriba 'salir' para volver al menu principal):");
+        
+        if (codigo1.toLowerCase() === 'salir') {
+            break;
+        }
+        
+        let productoEncontrado = productos.find(producto => producto.codigo === codigo1);
+        
+        if (productoEncontrado) {
+            console.log("Producto encontrado:");
+            console.table(productoEncontrado);
         } else {
-            console.log("Producto no encontrado");
+            console.log("Producto no encontrado.");
         }
     }
 }
 
 
+//Seccion usuario
 
-
-// defino el producto  verifico que sea un entero y lanzo la llamada  a escribir el numero
-/*function producto() {
-    let precioProducto = parseInt(prompt("¿Cuanto cuesta el producto?"));
-    return precioProducto;
+function mostrarProductosAgregados() {
+    console.log("Productos agregados por el administrador:");
+    if (productos.length === 0) {
+        console.log("No se han agregado productos aún.");
+    } else {
+        productos.forEach(producto => {
+            console.table(`Categoría: ${producto.categoria}, Código: ${producto.codigo}, Nombre: ${producto.nombre}, Importe: ${producto.importe}, Descripción: ${producto.descripcionprod}`);
+        });
+    }
 }
+
+function Agregarproductoalcarrito() {
+    let codigo = prompt("Ingrese el código del producto que desea agregar al carrito (o escriba 'salir' para volver al menú principal):");
+    
+    if (codigo.toLowerCase() === 'salir') {
+        console.log("Volviendo al menú principal...");
+        return;
+    }
+    
+    let productoEncontrado = productos.find(producto => producto.codigo === codigo);
+    
+    if (productoEncontrado) {
+        carrito.agregarProducto(productoEncontrado);
+    } else {
+        console.log("Producto no encontrado.");
+    }
+}
+
+
+function mostrarCarrito() {
+    console.log("Contenido del carrito:");
+    if (carrito.productos.length === 0) {
+        console.log("El carrito está vacío.");
+    } else {
+        carrito.productos.forEach(producto => {
+            console.table(producto);
+        });
+    }
+}
+function finalizarCompra() {
+    // Mostrar el contenido del carrito
+    console.log("Contenido del carrito:");
+    if (carrito.productos.length === 0) {
+        console.log("El carrito está vacío.");
+    } else {
+        carrito.productos.forEach(producto => {
+            console.table(producto);
+        });
+    }
+    
+    // Calcular el importe total
+    let importeTotal = 0;
+    carrito.productos.forEach(producto => {
+        importeTotal += producto.importe;
+    });
+
+    // Mostrar el importe total
+    console.log("Importe total de la compra: $" + importeTotal.toFixed(2));
+    
+    // Limpiar el carrito
+    carrito.productos = [];
+}
+
+
+
 //en la variable totalimp pongo los datos almacenados de totalcompra y los multiplico por el 21 %
 function totalimpuestos (){
     totalimp=totalCompra*1.21;
  
-}*/
+}
