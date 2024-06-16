@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Electro-Commerce</title>
+    <link rel="shortcut icon" href="images/shopping-cart-blue.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <script defer src="js/checkout.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script defer src="js/productos.js"></script>
+
+    <script defer src="js/index.js"></script>
+        
+ 
+
+
+</head> 
+<body class="container-fluid">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark container w-100">
+            <div class="container-fluid "> 
+                <a class="navbar-brand  " href="/index.html">
+                    <img src="/src/img/logo-fix.png" alt="Logo" width="100%">
+                </a>
+                
+                <div class="collapse navbar-collapse justify-content-between" id="navbarNav"> 
+                    <search>
+                        <input type="search" id="inputSearch" placeholder="Filtra productos por su nombre 🔍">
+                    </search>
+                    <div class="header" id="header">
+                        <img id="carrito" class="logo" src="images/shopping-cart.png" title="Ir al carrito">
+                        <h2 class="add-to-cart" id="slogan"></h2>
+                        <div class="carrito">
+                            <p>Carrito:<span id="productosEnCarrito">0</span></p>
+                        </div>
+                    </div>
+
+        </nav>
+      
+       
+    </header>
+    <main class="container">
+        <section>
+            <table>
+                <thead>
+                    <tr>
+                        <th id="tablehead">Producto</th>
+                        <th id="tablehead">Descripción</th>
+                        <th id="tablehead">Importe</th>
+                        <th id="tablehead">Quitar</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+                <tfoot>
+                    <tr class="total-carrito">
+                        <td></td>
+                        <td>TOTAL:</td>
+                        <td id="importeTotalCarrito">$ 0.00</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+        <div class="btnCompra">
+            <button class="button" id="btnComprar">COMPRAR</button>
+        </div>
+    </main>
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p>&copy; 2024 Compra Game</p>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -2,72 +2,95 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <title>CompraGamer</title>
+    <link rel="shortcut icon" href="images/shopping-cart-blue.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda ecomerce</title>
+    <link rel="stylesheet" href="css/styles.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    
-    <link href="styles.css" rel="stylesheet">
-</head>
-<body class="container-fluid">
-    <header clas>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark container w-100">
-            <div class="container-fluid "> 
-               <div class="d-flex">
 
-               </div>
+
+
+
+
+
+    <script src="js/productos.js"></script>
+    <script defer src="js/index.js"></script>
+
+
+
+
+
+
+
+</head> 
+<body class="body">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark container w-100 navbaror">
+            <div class="container-fluid"> 
                 <a class="navbar-brand" href="#">
-                    <img src="/styles/logo-fix.png" alt="Logo" width="100%">
+                    <img src="/src/img/logo-fix.png" alt="Logo" width="100%">
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    
+               
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-between" id="navbarNav"> 
-                
-                    <form class="form-inline my-2 my-lg-0 w-100">
-                        <div class="d-flex w-100">
-                            <input class="form-control mr-sm-2 w-50" type="search" placeholder="Buscar productos" aria-label="Search">
-                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Buscar</button>
+    
+               
+                <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                    <search class="inp">
+                        <input type="search" id="inputSearch" placeholder="Filtra productos por su nombre 🔍" class="">
+                    </search>
+                    <div class="header" id="header">
+                        <img id="carrito" class="logo" src="images/shopping-cart.png" title="Ir al carrito">
+                        <h2 class="add-to-cart" id="slogan"></h2>
+                        <div class="carrito">
+                            <p>Carrito: <span id="productosEnCarrito">0</span></p>
                         </div>
-                        
-                    </form>
-                    <a class="nav-link" href="#">
-                      
-                    </a>
-                    
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
     
-<div class="container mt-5">4
-    <h2>Elegí tu Procesador</h2>
-   <p>Tu procesador es la pieza central del rendimiento de los programas. Para saber si un procesador es potente lo que tenés que medir es la frecuencia, el ancho de bus, la memoria caché y los núcleos e hilos de procesamiento.</p>
-   <div class="d-flex bg-black" >
-    <div class="d-flex  " >
-        <div class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasLabel">Offcanvas</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-              Content for the offcanvas goes here. You can place just about any Bootstrap component or custom elements here.
-            </div>
-          </div>
-</div>
-</div>
-
-
-<footer class="bg-dark text-white text-center py-4">
-    <div class="container">
-        <p>&copy; 2024 Tu Empresa</p>
+    <div class="container mt-5">
+        <h2>Selecciona tu Producto</h2>
+        <p>Tu procesador es la pieza central del rendimiento de los programas. Para saber si un procesador es potente lo que tenés que medir es la frecuencia, el ancho de bus, la memoria caché y los núcleos e hilos de procesamiento.</p>
     </div>
-</footer>
-<script src="C:\Users\mariano\Desktop\Clase 02 - Condicionales - Ciclos e iteraciones\main.js" > </script>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <main class="container mt-4">
+        <div class="rows">
+            <aside class="col-md-3">
+                <h3>Filtrar por Categoría</h3>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="#" class="Filtro-Categoria" data-category="Motherboard">Motherboard</a></li>
+                    <li class="list-group-item"><a href="#" class="Filtro-Categoria" data-category="Procesador">Procesador</a></li>
+                    <li class="list-group-item"><a href="#" class="Filtro-Categoria" data-category="Memoria ram">Memoria RAM</a></li>
+                    <li class="list-group-item"><a href="#" class="Filtro-Categoria" data-category="fuentes">Fuentes</a></li>
+                    <li class="list-group-item"><a href="#" class="Filtro-Categoria" data-category="gabinete">Gabinete</a></li>
+                    <li class="list-group-item"><a href="#" class="Filtro-Categoria" data-category="Placa de video">Placa de Video</a></li>
+                    <li class="list-group-item"><a href="#" class="Filtro-Categoria" data-category="monitor">Monitor</a></li>
+                </ul>
+            </aside>
+    
+            <div class="col-md-9">
+                <div class="row" id="divContenedor">
+                   
+                </div>
+              
+                
+            </div>
+        </div>
+    </main>
+    
+    <footer class=" text-white text-center py-4">
+        <div class="container">
+            <p>&copy; 2024 Compra Gamer</p>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="/Js/main.js"></script>
-
 </body>
 </html>

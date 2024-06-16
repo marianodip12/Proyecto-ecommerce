@@ -1,0 +1,309 @@
+/* Estilos importados de fuentes y normalización */
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css");
+
+/* Estilos personalizados */
+.navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.navbaror{background-color: #fd611a;}
+.form-control {
+    width: 100%;
+    max-width: 300px;
+}
+
+* {
+    margin: 10px;
+}
+
+search {
+    margin: 0 auto;
+    max-width: 80%;
+}
+
+footer {
+    margin: 0 auto;
+    max-width: 900px;
+    background-color: #fd611a;
+    font-weight: 700;
+    padding: 30px;
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+div#mensajeComprar {
+    visibility: hidden;
+    margin: 0 auto;
+    width: 600px;
+    padding: 20px;
+    background-color: rgb(153, 215, 153);
+    color: white;
+    font-weight: 700;
+    border-radius: 10px;
+    box-shadow: 6px 6px 16px lightgray;
+}
+
+dialog {
+    background-color: green;
+    color: white;
+}
+
+.mostrar-mensaje {
+    visibility: visible !important;
+}
+
+.quitar-carrito {
+    cursor: pointer;
+}
+
+.imagen-carrito {
+    font-size: 44px;
+}
+
+.total-carrito {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+img.logo {
+    display: inline;
+    width: 48px;
+    float: right;
+    margin-top: 26px;
+    cursor: pointer;
+}
+
+div.header {
+    display: inline;
+}
+
+div.carrito span {
+    font-weight: 700;
+}
+
+.centrar-div {
+    text-align: center;
+}
+
+.container {
+    max-width: 900px;
+    gap: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.div-card {
+    text-align: center;
+    border-radius: 5px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: lightblue;
+    box-shadow: 10px 6px 6px rgba(211, 211, 211, 0.221);
+    width: 230px;
+    background-color: white;
+}
+
+.div-card button {
+    flex-flow: 1;
+    margin-block-end: 6px;
+}
+
+.div-card:hover {
+    background-color: rgba(229, 248, 255, 0.456);
+    transition: 0.5s ease-in;
+    box-shadow: 5px 20px 60px rgba(211, 211, 211, 0.519);
+}
+
+div.imagen {
+    font-size: 60px !important;
+}
+
+div.imagen:hover {
+    transform: scale(1.25);
+    transition: 0.2s ease-in;
+}
+
+div.producto {
+    font-size: 14px;
+}
+
+div.importe {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.card button {
+    font-size: 10px;
+    width: 100px;
+    padding: 0px !important;
+}
+
+button:hover {
+    background-color: rgb(131, 51, 171) !important;
+    color: white;
+    border-color: lightgray;
+}
+
+button:active {
+    background-color: black !important;
+    color: white;
+    border-color: black;
+}
+
+.div-card-error {
+    width: auto;
+    padding: 40px;
+    max-width: 900px;
+    text-align: center;
+    border: 1px solid red;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    box-shadow: 2px 2px 8px lightgrey;
+    background-color: rgba(255, 0, 0, 0.091);
+    margin-top: -10px;
+    margin-bottom: 40px;
+}
+
+.imagen-error {
+    font-size: 60px;
+}
+
+.leyenda-error {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.leyenda-intento {
+    font-size: 20px;
+}
+
+@media (max-width: 620px) {
+    div.header h1 {
+        font-size: 4rem;
+    }
+
+    div.header img.logo {
+        width: 40px;
+    }
+
+    div.header h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .div-card {
+        width: 100%; /* Ajuste opcional: ya está definido en el estilo original */
+        margin-right: auto;
+        margin-left: auto;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+        padding: 10px;
+        text-align: center;
+    }
+}
+
+
+h2 {
+    font-size: 14px;
+}
+
+p {
+    font-size: 12px;
+}
+
+/* Estilos adicionales específicos para el proyecto */
+.container {
+    max-width: 1200px;
+}
+
+.header {
+    
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.form-control {
+    margin-bottom: 10px;
+}
+
+.list-group-item a {
+    text-decoration: none;
+    color: #000;
+}
+
+.list-group-item a:hover {
+    text-decoration: underline;
+}
+
+.div-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.add-to-cart {
+    margin-top: 10px;
+}
+
+.btnCompra {
+    display: flex;
+    justify-content: center;
+}
+
+.checkout {
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media (min-width:770px) {
+    .div-card {
+        width: 350px; 
+        margin-right: auto;
+        margin-left: auto;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+        padding: 10px;
+        text-align: center;
+    }
+    
+
+  
+  
+  
+  #divContenedor {
+
+    display: flex;
+    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 100%;
+  }
+  
+  /* styles.css | http://127.0.0.1:5500/css/styles.css */
+  
+  @media (min-width:770px) {
+    .div-card {
+     
+      width: 350px;
+    }
+    .inp{
+        width: 400px;
+    }
+  }
+  .rows{display: flex;}
+}
+.inp{
+    background-color: antiquewhite;
+    
+}
+.body{
+    background-color: #eee;
+}
