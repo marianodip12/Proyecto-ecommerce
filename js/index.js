@@ -4,9 +4,20 @@ const inputSearch = document.getElementById("inputSearch")
 const spanCarrito = document.getElementById("productosEnCarrito")
 
 const carrito = JSON.parse(localStorage.getItem("carritoCompras")) ?? []
+const Productos=[]
+const URLproductos = "https://668af2bc2c68eaf3211e466a.mockapi.io/Productos" // aplicación backend
+
+//const URLproductos = "js/productos.json" //url para funcion fetch
 
 
-
+function mostrarMensajeToast(mensaje, color) {
+    Toastify({
+        text: mensaje,
+        duration: 3500,
+        // close: true,
+        style: { background: color, }
+        }).showToast();
+}
 
 
 
@@ -20,6 +31,31 @@ function retornarCardHTML(Productos) {
             </div>`
 }
 
+
+    async function obtenerProductos() {
+        try {
+            const response = await fetch(URLproductos)
+            const data = await response.json()
+            Productos.push(...data)
+            cargarProductos(Productos)
+        } catch (error) {
+            divContenedor.innerHTML = retornarCardError()        
+        }
+    }
+
+/*
+function obtenerProductos() {
+    // Petición FETCH para traer los productos
+    fetch(URLproductos)
+    .then((response)=> response.json())
+    .then((datos)=> Productos.push(...datos) )
+    .then(()=> cargarProductos(Productos))
+    .catch((error)=> {
+        console.error(error)
+        divContenedor.innerHTML = retornarCardError()
+    })
+} */
+
 function cargarProductos(array) {
     if (array.length > 0) {
         divContenedor.innerHTML = ""
@@ -30,10 +66,13 @@ function cargarProductos(array) {
         // Funcion para saber si hay elementos en el carrito  y actualiza el 
 
         carrito.length > 0 && actualizarTotalCarrito()
-    } else {
-        divContenedor.innerHTML = retornarCardError()
-    }
+    } 
 }
+
+
+
+
+
 
 function actualizarTotalCarrito() {
     spanCarrito.textContent = carrito.length
@@ -63,7 +102,7 @@ function activarEventosClick() {
 }
 
 
-cargarProductos(Productos)
+obtenerProductos(Productos)
 
 //Funcion para buscar un producto
 inputSearch.addEventListener("keyup", (e)=> { 
@@ -91,18 +130,6 @@ btnCarrito.addEventListener("mousemove", ()=> {
     }
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
 //Evento para filtrar por categoria
 document.addEventListener("DOMContentLoaded", () => {
     cargarProductos(Productos);
@@ -117,3 +144,4 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+

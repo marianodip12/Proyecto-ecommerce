@@ -55,6 +55,7 @@ cargarProductosDelCarrito();
 //Eventos
 
 // Click para finalizar la compra
+/*
 btnComprar.addEventListener("click", () => {
     const Compra = document.querySelector("div#mensajeComprar");
    
@@ -63,7 +64,34 @@ btnComprar.addEventListener("click", () => {
     localStorage.removeItem("carritoCompras");
     carrito = [];
 });
+*/
+btnComprar.addEventListener("click", ()=> {
 
-
+    Swal.fire({
+        title: "Finalizar compra",
+        text: "¿Deseas confirmar la compra actual?",
+        icon: "question",
+        showCancelButton: true,
+        cancelButtonText: "Cancelar",
+        confirmButtonText: "Confirmar"
+    })
+    .then((result) => {
+        if (result.isConfirmed) {
+            localStorage.removeItem("carritoCompras")
+            carrito.length = 0 // redireccionar al usuario a HOME.
+            Swal.fire({
+                icon: 'success',
+                text: 'Compra finalizada con éxito.'
+            })
+        }
+        const Compra = document.querySelector("div#mensajeComprar");
+   
+        tableBody.innerHTML = "";
+        importeTotalCarrito.textContent = "$ 0.00";
+        localStorage.removeItem("carritoCompras");
+        carrito = [];
+    })
+   
+})
 
 
